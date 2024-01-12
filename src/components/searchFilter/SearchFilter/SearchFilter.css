@@ -1,0 +1,64 @@
+.react-datepicker-wrapper {
+  width: 100%;
+}
+.react-datepicker__input-container input {
+  border: 1px solid;
+  border-radius: 4px;
+  min-height: 38px;
+  width: 100%;
+  border-color: hsl(0, 0%, 70%);
+  padding: 2px 8px;
+}
+.custom-divider {
+  height: 20px;
+  background: hsl(0, 0%, 80%);
+  width: 1px;
+  left: 0;
+  position: absolute;
+}
+g {
+  fill: hsl(0deg 1.16% 62.02%);
+}
+input[type="checkbox"] {
+  position: relative;
+  border: 2px solid #000;
+  border-radius: 2px;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+
+  outline: 0;
+  padding: 0 !important;
+  vertical-align: text-top;
+  height: 20px;
+  width: 20px;
+  opacity: 0.5;
+}
+
+input[type="checkbox"]:hover {
+  opacity: 1;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #3b82f6;
+  opacity: 1;
+  color: #fff;
+}
+
+input[type="checkbox"]:before {
+  content: "";
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  width: 6px;
+  height: 12px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  margin: -1px -1px 0 -1px;
+  transform: rotate(45deg) translate(-50%, -50%);
+  z-index: 2;
+}
+.css-13cymwt-control,
+.react-datepicker__input-container input {
+  background: #fff5e8 !important;
+}

@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+body {
+  font-family: "Roboto", sans-serif;
+}
+::placeholder {
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+li {
+  list-style: none;
+}

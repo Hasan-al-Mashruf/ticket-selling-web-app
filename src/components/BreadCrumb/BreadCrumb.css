@@ -1,0 +1,17 @@
+.breadcrumb {
+  background-image: url("../../assets/bg-breadcrumb.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+.breadcrumb::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #141414cf;
+  width: 100%;
+  height: 100%;
+}
