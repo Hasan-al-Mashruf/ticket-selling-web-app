@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import FormValidation from "../../components/FormValidation/FormValidation";
+
 import {
   getBookedCouch,
   getBookedSit,
@@ -12,6 +12,8 @@ import BreadCrumb from "../../components/BreadCrumb/BreadCrumb";
 import "./Checkout.css";
 import { useSelector } from "react-redux";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import Signup from "../../components/FormValidation/Signup";
+import Signin from "../../components/Signin/Signin";
 const Checkout = () => {
   let location = useLocation();
   const navigate = useNavigate();
@@ -47,7 +49,7 @@ const Checkout = () => {
   }, [user]);
 
   const confirmbooking = async () => {
-    if (data?.guestName) {
+    if (data?.guestName && data?.guestid) {
       try {
         const response = await fetch("http://localhost:5000/booked", {
           method: "POST", // or 'PUT'
@@ -71,7 +73,11 @@ const Checkout = () => {
   if (bookedSit.length == 0) {
     return <Navigate to="/" state={{ from: location }} replace />;
   }
+  const [isSignInVisible, setIsSignInVisible] = useState(true);
 
+  const toggleSignInVisibility = () => {
+    setIsSignInVisible(!isSignInVisible);
+  };
   return (
     <div>
       <Header />
@@ -101,7 +107,29 @@ const Checkout = () => {
                     })}
                 </div>
               ) : (
-                <div>{<FormValidation />}</div>
+                <div>
+                  <div className="mb-16">
+                    <div className="lg:w-[400px] border rounded p-1 mx-auto">
+                      <button
+                        className={`w-1/2 btn h-[38px] py-2 px-4  rounded ${
+                          isSignInVisible ? "bg-blue-500 text-white" : ""
+                        }`}
+                        onClick={toggleSignInVisibility}
+                      >
+                        Sign up
+                      </button>
+                      <button
+                        className={`w-1/2 btn h-[38px] py-2 px-4  rounded ${
+                          isSignInVisible ? "" : "bg-blue-500 text-white"
+                        }`}
+                        onClick={toggleSignInVisibility}
+                      >
+                        Sign in
+                      </button>
+                    </div>
+                  </div>
+                  {isSignInVisible ? <Signup /> : <Signin />}
+                </div>
               )}
             </div>
 

@@ -62,7 +62,7 @@ const Hero = ({
   };
 
   return (
-    <div className="lg:-mt-[48px] relative">
+    <div className="relative">
       <div className="relative lg:h-[80vh] h-full mb-8 px-4 py-10">
         <video
           src={video}

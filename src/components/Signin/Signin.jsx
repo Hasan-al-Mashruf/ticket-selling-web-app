@@ -1,72 +1,57 @@
-import React, { useEffect, useState } from "react";
-import "./FormValidation.css";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../../firebase/firebase";
+import React from "react";
+import "./Signin.css";
 import { useForm } from "react-hook-form";
+import { auth } from "../../firebase/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { updateCurrentUser } from "../../features/bookingSlice";
-import { showCurrentUser } from "../../features/api";
-import OtpInput from "react-otp-input";
 
-const FormValidation = () => {
+const Signin = () => {
   const dispatch = useDispatch();
-  const user = showCurrentUser();
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
   const onSubmit = (data) => {
     const { email, password } = data;
-    let name = email.split("@");
-    name = name[0].trim();
-    createUserWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        // Signed in
         const user = userCredential.user;
-        if (user.email) {
-          updateProfile(auth.currentUser, {
-            displayName: name,
-          }).then(() => {
-            if (auth.currentUser) {
-              saveToDB(name, email);
-            }
-          });
+        console.log(user?.email);
+        if (user?.email) {
+          checkUserInDB(user);
         }
+        // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(error);
-        // ..
       });
   };
 
-  const saveToDB = async (name, email) => {
-    const user = { name, email };
+  const checkUserInDB = async (user) => {
+    const email = user?.email;
+    console.log(email);
     try {
-      const response = await fetch("http://localhost:5000/users", {
-        method: "POST", // or 'PUT'
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      });
-
+      const response = await fetch(
+        `http://localhost:5000/users?email=${email}`
+      );
       const result = await response.json();
-      if (result.insertedId || result.message) {
+      console.log(result);
+      if (result?.email) {
         dispatch(
           updateCurrentUser({
             name: auth?.currentUser?.displayName,
             email: auth?.currentUser?.email,
-            userid: result.insertedId,
+            userid: result?._id,
           })
         );
         const userData = {
           name: auth?.currentUser?.displayName,
           email: auth?.currentUser?.email,
-          userid: result.insertedId,
+          userid: result?._id,
         };
         localStorage.setItem("userData", JSON.stringify(userData));
       }
@@ -159,7 +144,7 @@ const FormValidation = () => {
             className="border px-3 py-1 rounded-sm
             text-base text-[#222222d7] hover:border-cyan-50  hover:text-[#7c1717] hover:underline transition-all duration-300  ease-in-out"
           >
-            Submit
+            Sign in
           </button>
         </div>
       </form>
@@ -167,4 +152,4 @@ const FormValidation = () => {
   );
 };
 
-export default FormValidation;
+export default Signin;

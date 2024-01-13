@@ -5,14 +5,16 @@ import { getAuth } from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCuDzpIVfDhs_-7VH1Q6_rm35bgaTRk8zI",
-  authDomain: "roombookings-c84e4.firebaseapp.com",
-  projectId: "roombookings-c84e4",
-  storageBucket: "roombookings-c84e4.appspot.com",
-  messagingSenderId: "142392325218",
-  appId: "1:142392325218:web:98d1f07219eb15f75d8d3b",
+  apiKey: "AIzaSyBX2B3KaId_57P4mvp4PuIdyhp9ERPCbEs",
+  authDomain: "ticket-booking-app-49ea2.firebaseapp.com",
+  projectId: "ticket-booking-app-49ea2",
+  storageBucket: "ticket-booking-app-49ea2.appspot.com",
+  messagingSenderId: "756808277694",
+  appId: "1:756808277694:web:59a8a3109217ab8a03c8ef",
 };
+
 // Initialize Firebase
 
 export const app = initializeApp(firebaseConfig);

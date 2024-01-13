@@ -34,11 +34,15 @@ const Header = () => {
   };
   return (
     <div
-      className={ `${!user.name && "hidden"} bg-white z-50 relative`}
+      className={` bg-white z-50 relative`}
       style={{ backdropFilter: "blur(3px)" }}
     >
       <div className="container relative">
-        <div className="py-2 border-b-orange-50 lg:px-0 px-4">
+        <div
+          className={`  ${
+            user.name ? "py-2" : "md:py-2 py-0"
+          }  border-b-orange-50 lg:px-0 px-4`}
+        >
           <div className="flex justify-between">
             <div className="md:flex gap-3 items-center hidden">
               <li className="flex items-center gap-2 ">
