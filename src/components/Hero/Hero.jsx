@@ -36,7 +36,7 @@ const Hero = ({
     const fetchBusDetails = async () => {
       if (busCategory) {
         const data = await fetch(
-          `http://localhost:5000/availableBus?category=${busCategory}`
+          `https://ticket-selling-web-app-server-side.vercel.app/availableBus?category=${busCategory}`
         );
         const response = await data.json();
 

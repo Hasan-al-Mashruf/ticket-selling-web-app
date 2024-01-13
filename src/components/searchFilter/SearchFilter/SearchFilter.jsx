@@ -77,6 +77,9 @@ const SearchFilter = () => {
     if (busCategorySelection.length == 0) {
       setIsAllCheck(false);
     }
+    if (busCategorySelection.length == 5) {
+      setIsAllCheck(true);
+    }
   }, [busCategorySelection]);
 
   const busCategory = ["Elite", "Scania", "Deluxe", "DoubleDecker", "Premium"];
@@ -90,7 +93,6 @@ const SearchFilter = () => {
   const clearFilter = () => {
     dispatch(addFilterCategory({ isTrue: true }));
   };
-
 
   return (
     <div className="container lg:p-0 p-5">

@@ -19,7 +19,7 @@ const Signin = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user?.email);
+
         if (user?.email) {
           checkUserInDB(user);
         }
@@ -33,13 +33,13 @@ const Signin = () => {
 
   const checkUserInDB = async (user) => {
     const email = user?.email;
-    console.log(email);
+
     try {
       const response = await fetch(
-        `http://localhost:5000/users?email=${email}`
+        `https://ticket-selling-web-app-server-side.vercel.app/users?email=${email}`
       );
       const result = await response.json();
-      console.log(result);
+
       if (result?.email) {
         dispatch(
           updateCurrentUser({

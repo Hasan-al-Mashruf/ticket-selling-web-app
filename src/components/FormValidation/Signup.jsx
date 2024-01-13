@@ -37,7 +37,7 @@ const Signup = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(error);
+
         // ..
       });
   };
@@ -45,13 +45,16 @@ const Signup = () => {
   const saveToDB = async (name, email) => {
     const user = { name, email };
     try {
-      const response = await fetch("http://localhost:5000/users", {
-        method: "POST", // or 'PUT'
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      });
+      const response = await fetch(
+        "https://ticket-selling-web-app-server-side.vercel.app/users",
+        {
+          method: "POST", // or 'PUT'
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        }
+      );
 
       const result = await response.json();
       if (result.insertedId || result.message) {

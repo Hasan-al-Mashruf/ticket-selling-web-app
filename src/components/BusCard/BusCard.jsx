@@ -52,7 +52,7 @@ const BusCard = ({ showBusDetails, busData }) => {
           return (
             <article className="card cursor-pointer relative" key={index}>
               <img
-                className="card__background"
+                className="card__background "
                 src={data?.locationimgs[imageIndex]}
                 alt="Photo of Cartagena's cathedral at the background and some colonial style houses"
                 width="1920"

@@ -26,13 +26,16 @@ const Modal = ({
 
   const saveMsgToDb = async (review) => {
     try {
-      const response = await fetch("http://localhost:5000/review", {
-        method: "POST", // or 'PUT'
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(review),
-      });
+      const response = await fetch(
+        "https://ticket-selling-web-app-server-side.vercel.app/review",
+        {
+          method: "POST", // or 'PUT'
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(review),
+        }
+      );
       const result = await response.json();
 
       if (result.acknowledged) {

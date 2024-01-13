@@ -5,7 +5,9 @@ export const fetchBusData = createAsyncThunk(
   "bookingApp/fetchBusData",
   async () => {
     try {
-      const response = await fetch("http://localhost:5000/busList");
+      const response = await fetch(
+        "https://ticket-selling-web-app-server-side.vercel.app/busList"
+      );
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -22,7 +24,9 @@ export const fetchBookingsData = createAsyncThunk(
   "bookingApp/fetchBookingsData",
   async () => {
     try {
-      const response = await fetch("http://localhost:5000/bookings");
+      const response = await fetch(
+        "https://ticket-selling-web-app-server-side.vercel.app/bookings"
+      );
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -38,7 +42,9 @@ export const fetchReviews = createAsyncThunk(
   "bookingApp/fetchReviews",
   async () => {
     try {
-      const response = await fetch("http://localhost:5000/review");
+      const response = await fetch(
+        "https://ticket-selling-web-app-server-side.vercel.app/review"
+      );
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }

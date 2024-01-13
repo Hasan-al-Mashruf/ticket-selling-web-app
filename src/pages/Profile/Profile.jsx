@@ -15,7 +15,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchBusDetails = async () => {
       const data = await fetch(
-        `http://localhost:5000/singlebookings?id=${user?.userid}`
+        `https://ticket-selling-web-app-server-side.vercel.app/singlebookings?id=${user?.userid}`
       );
       const response = await data.json();
       setBookings(response);
@@ -60,8 +60,11 @@ const Profile = () => {
             ?.slice()
             .reverse()
             .map((booking, index) => (
-              <div className="mb-10 border rounded-md  overflow-scroll md:overflow-hidden " key={index}>
-                <table  className="mid:min-w-fit min-w-[800px]">
+              <div
+                className="mb-10 border rounded-md  overflow-scroll md:overflow-hidden "
+                key={index}
+              >
+                <table className="mid:min-w-fit min-w-[800px]">
                   <tbody>
                     {booking.bookingDetails.map((details, innerIndex) => (
                       <tr key={innerIndex}>
@@ -106,7 +109,9 @@ const Profile = () => {
                     onMouseLeave={() => setHoverdIndex(null)}
                   >
                     <table
-                      className={`${index == hoverdIndex ? "blur-sm" : ""} mid:min-w-fit min-w-[800px]`}
+                      className={`${
+                        index == hoverdIndex ? "blur-sm" : ""
+                      } mid:min-w-fit min-w-[800px]`}
                     >
                       <tbody>
                         {booking.bookingDetails.map((details, innerIndex) => (
